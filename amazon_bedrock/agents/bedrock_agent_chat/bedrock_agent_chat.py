@@ -29,7 +29,7 @@ agent_config = config['AGENT_CONFIG']
 model_id = agent_config.get('MODEL_ID') if agent_config.get('MODEL_ID') != "" else "anthropic.claude-instant-v1"
 agent_id = agent_config.get('AGENT_ID')
 agent_alias_id = agent_config.get('AGENT_ALIAS_ID') 
-enable_trace = agent_config.get('ENABLE_TRACE') if agent_config.get('ENABLE_TRACE') != "" else False
+enable_trace = bool(agent_config.get('ENABLE_TRACE')) if agent_config.get('ENABLE_TRACE') != "" else False
 agent_personna = agent_config.get('AGENT_PERSONNA') if agent_config.get('AGENT_PERSONNA') != "" else "Agent" 
 chat_greeting = f"\nHello I'm the {agent_personna}. How may I help you?"
 chat_end_instruction = f"To end the conversation, type bye and check traces in {trace_log}" if enable_trace else "To end the conversation, type bye"
